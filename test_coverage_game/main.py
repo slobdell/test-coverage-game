@@ -75,4 +75,4 @@ def run():
             coverage_data[key] = settings_dict[key]
     response = requests.post(POST_URL % settings_dict["project_identifier"], data=json.dumps(coverage_data))
     response.raise_for_status()
-    print "Finished.  Results can be viewed at %s" (FINAL_URL % settings_dict["project_identifier"])
+    print "Finished.  Results can be viewed at %s" % (FINAL_URL % settings_dict["project_identifier"])

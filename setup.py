@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name='test-coverage-game',
-    version="1.0.10",
+    version="1.1.1",
     url='https://github.com/slobdell/test-coverage-game',
     author="Scott Lobdell",
     author_email="scott.lobdell@gmail.com",
