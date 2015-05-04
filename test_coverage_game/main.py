@@ -12,6 +12,7 @@ from .get_stats import (
 )
 
 POST_URL = "http://test-coverage-game.herokuapp.com/api/%s/"
+FINAL_URL = "http://test-coverage-game.herokuapp.com/project/%s/"
 
 SETTINGS_FILENAME = ".coveragegamerc"
 REQUIRED_KEYS = (
@@ -69,5 +70,9 @@ def run():
     settings_dict = get_settings()
     run_tests(settings_dict["test_run_command"])
     coverage_data = get_coverage_data(settings_dict["get_python_files_command"])
+    for key in ("min_authors", "display_percent"):
+        if key in settings_dict:
+            coverage_data[key] = settings_dict[key]
     response = requests.post(POST_URL % settings_dict["project_identifier"], data=json.dumps(coverage_data))
     response.raise_for_status()
+    print "Finished.  Results can be viewed at %s" (FINAL_URL % settings_dict["project_identifier"])
